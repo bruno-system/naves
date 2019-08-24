@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+<head>
+	<title>.::Carlitos vs Palomas::.</title>
+	<link rel="icon" href="pollito.png" type="image/x-icon"/>
+		<style type="text/css">
+		canvas{
+			border:solid;
+		}
+	</style>
+
+
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<link rel="stylesheet" href="/resources/demos/style.css">
+<style>
+.ui-progressbar {
+position: relative;
+width: 800px
+}
+.progress-label {
+position: absolute;
+left: 50%;
+top: 4px;
+font-weight: bold;
+text-shadow: 1px 1px 0 #fff;
+}
+</style>
+
+
+
+<script>
+$(function() {
+var progressbar = $( "#progressbar" ),
+
+
+progressLabel = $( ".progress-label" );
+progressbar.progressbar({
+value: false,
+change: function() {
+progressLabel.text( progressbar.progressbar( "value" ) + "%" );
+},
+complete: function() {
+progressLabel.text( "Complete!" );
+$( "#progressbar" ).hide();
+}
+
+
+});
+function progress() {
+
+var val = progressbar.progressbar( "value" ) || 0;
+//progressbar.progressbar( "value", val+1 );
+if ( val < 99 ) {
+setTimeout( progress, 100 );
+}
+
+}
+//configuracion de color
+progressbarValue = progressbar.find( ".ui-progressbar-value" );
+ progressbarValue.css({
+"background": '#D7DF01'
+});
+
+setTimeout( progress, 3000 );
+});
+</script>
+
+
+
+
+</head>
+<body background="http://previews.123rf.com/images/losswen/losswen1105/losswen110500003/9486014-Patron-sans-soudure-de-nuages-Banque-d'images.jpg" >		
+	<div align="center"> <img src="BANNER.png"></div>
+	<div align="center">
+
+	<div id="progressbar">
+		<div class="progress-label">Loading...</div>
+	</div>
+
+
+
+
+
+	<canvas id='game' width='800' height='400' tabindex="1"></canvas>
+	<script src='preloadjs-0.1.0.min.js'></script>
+	<script src='main.js'></script>
+	</div>
+	<div align="center">  <img src="teclado.png">
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		canvas{
+			border:solid;
+		}
+	</style>
+</head>
+<body>
+	<canvas id='micanvas'>
+		Tu navegador no soporta Canvas.
+	</canvas>
+	<input type="button" value='iniciar' id='boton'>
+	<script >
+		var velocidad=5, direccion = velocidad, iniciar = false, x=50, y=10;
+		window.addEventListener('load',init);
+		function init()
+		{ 
+			
+			var canvas =document.getElementById('micanvas');
+			var ctx= canvas.getContext('2d');   // marco q es 2d no 3d 
+			ctx.arc(x,y,10,0,7);  //  pos x, pos y, ancho y alto 
+
+			ctx.fill();
+
+			document.getElementById('boton').addEventListener('click',function() { 
+				if(iniciar)
+				{
+					this.value='Iniciar';
+					window.clearInterval(intervalo);
+					iniciar=false;
+
+				}
+				else
+				{
+					this.value ='Detener';
+					intervalo=window.setInterval(function(){
+						moveAndDraw(canvas,ctx);					
+					},32);
+					iniciar =true;
+				}
+			});
+		
+		}
+
+		function draw(canvas,ctx,x,y)
+		{
+			canvas.width=canvas.width;
+			ctx.fillStyle = 'red';
+			ctx.arc(x,y,10,0,7);
+			ctx.fill();
+		}
+
+		function moveAndDraw (canvas,ctx) {
+			if(y > (canvas.height - 20)) direccion=-velocidad;
+			if(y < (20)) direccion= velocidad;
+			y += direccion;
+			draw(canvas,ctx,x,y);
+		}
+
+		
+
+	</script>
+</body>
+</html>

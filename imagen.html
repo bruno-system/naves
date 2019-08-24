@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		canvas{
+			border:solid;
+		}
+	</style>
+</head>
+<body>
+	<canvas id='micanvas'>
+		Tu navegador no soporta Canvas.
+	</canvas>
+	<img src="pollito.png" id="img" style='display:none;'>	
+
+	<script >
+		window.addEventListener('load',init);
+		function init(){
+			
+			var canvas =document.getElementById('micanvas');
+			var ctx= canvas.getContext('2d');   // marco q es 2d no 3d
+			var img=document.getElementById("img");
+			ctx.drawImage(img,0,0,100,200);//imagen, pos x, pos y, ancho , alto
+
+
+		}
+		function erase(canvas, ctx) // borrador de todo lo q este en oantalla
+		{
+			ctx.clearRect(0,0,canvas.width,canvas.height);
+		}
+
+		function a_radianes(grados)
+		{
+			return(grados * Math.PI)/180;
+		}
+	</script>
+</body>
+</html>
